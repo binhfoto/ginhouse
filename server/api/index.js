@@ -6,7 +6,6 @@ const router = require('express').Router();
 
 // require them and mount them to their respective routes below
 // by default, 'require' function will get the index.js file
-router.use('/events', require('./event/route'));
-router.use('/questions', require('./question/route'));
+router.use('/products', require('./product/route'));
 
 module.exports = router;

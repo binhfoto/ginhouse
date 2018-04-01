@@ -2,41 +2,30 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const _schema = new Schema({
-    eventId: {
-        type: Schema.Types.ObjectId,
-        ref: 'event',
-        required: true
-    },
-    question: {
+    name: {
         type: String,
         required: true
     },
-    author: {
+    description: {
         type: String,
-        default: 'Anonymous'
+        required: true
     },
-    isHighlight : {
-        type: Boolean,
-        default: false
-    },
-    vote: {
-        type: Number,
-        default: 0
-    },
-    created: {
+    created : {
         type: Date,
         default: Date.now()
     },
-    updated: {
+    updated : {
         type: Date,
         default: Date.now()
+    },
+    image: {
+        type: String
     }
 });
 
 _schema.pre('save', function (next) {
     this.updated = Date.now();
-
     next();
 });
 
-module.exports = mongoose.model('question', _schema);
+module.exports = mongoose.model('product', _schema);
