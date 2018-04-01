@@ -1,0 +1,19 @@
+{
+  "name": "ginhouse",
+  "version": "1.0.0",
+  "description": "ginhouse shop",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/binhfoto/ginhouse.git"
+  },
+  "author": "naibinh",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/binhfoto/ginhouse/issues"
+  },
+  "homepage": "https://github.com/binhfoto/ginhouse#readme"
+}
