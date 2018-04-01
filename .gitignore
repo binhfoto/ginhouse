@@ -57,3 +57,13 @@ typings/
 # dotenv environment variables file
 .env
 
+# exclude intelliJ file
+.idea/*
+
+# exclude mongo data
+mongo-data/*
+
+dist/*
+dist/js/*
+
+public/index.html
