@@ -1,4 +1,4 @@
-const MODEL_NAME = 'question';
+const MODEL_NAME = 'product';
 
 const {readFileSync} = require('fs');
 const {merge} = require('lodash');
@@ -13,21 +13,15 @@ const model = require('../../api/' + MODEL_NAME + '/model');
 
 const create = function (params) {
 
-    const {events} = params;
-    let promises = [];
+    logger.log('Mongo - Creating', data.length, MODEL_NAME + '(s)');
 
-    logger.log('Mongo - Creating', data.length * events.length, MODEL_NAME + '(s)');
-
-    events.forEach(event => {
-        const {_id} = event;
-        promises = promises.concat(data.map(function (item) {
-            return createDoc(model, merge(item, {eventId: _id}));
-        }));
+    const promises = data.map(function (item) {
+        return createDoc(model, item);
     });
 
     return Promise.all(promises)
         .then(function (items) {
-            return merge({question: items}, params || {});
+            return merge({products: items}, params || {});
         });
 }
 

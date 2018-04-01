@@ -4,6 +4,6 @@ module.exports = {
     seed: true,
     auth: true,
     db: {
-        url: 'mongodb://localhost/slido'
+        url: 'mongodb://localhost/ginhouse'
     }
 };

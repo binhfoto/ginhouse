@@ -6,15 +6,15 @@ const config = require('../../config');
 
 const shouldAuthenticate = config.auth === false ? [] : [auth.decodeToken()];
 
-router.param('code', controller.params);
+router.param('id', controller.params);
 
-// only admin can get all or create new events
 router.route('/')
-    .get(shouldAuthenticate, controller.get)
+    .get(controller.get)
     .post(shouldAuthenticate, controller.post);
 
-// audience can only join event with code
-router.route('/:code')
-    .get(controller.getOne);
+router.route('/:id')
+    .get(controller.getOne)
+    .put(shouldAuthenticate, controller.put)
+    .delete(shouldAuthenticate, controller.delete);;
 
 module.exports = router;

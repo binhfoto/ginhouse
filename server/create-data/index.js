@@ -1,10 +1,9 @@
 const logger = require('../util/logger');
 
 const user = require('./user');
-const event = require('./event');
-const question = require('./question');
+const product = require('./product');
 
-const MODELS = [user.model, event.model, question.model];
+const MODELS = [user.model, product.model];
 
 const cleanDB = function() {
     logger.log('Mongo - Cleaning up DB');
@@ -16,7 +15,6 @@ const cleanDB = function() {
 
 cleanDB() // pass data to next function
     .then(user.create)
-    .then(event.create)
-    .then(question.create)
+    .then(product.create)
     // log fake data to console
-    //.then(logger.log.bind(logger))
+    .then(logger.log.bind(logger))
