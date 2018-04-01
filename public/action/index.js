@@ -4,25 +4,18 @@ import {
     SIGNIN_SUCCESS,
     RESET_NOTIFICATION_MESSAGE,
     SIGNOUT,
-    FETCH_EVENT_REQUEST,
-    FETCH_EVENT_SUCCESS,
-    FETCH_EVENT_FAIL,
-    RESET_EVENT,
-    FETCH_EVENTS_REQUEST,
-    FETCH_EVENTS_SUCCESS,
-    FETCH_EVENTS_FAIL,
-    CREATE_EVENT_REQUEST,
-    CREATE_EVENT_SUCCESS,
-    CREATE_EVENT_FAIL,
-    POST_QUESTION_REQUEST,
-    POST_QUESTION_SUCCESS,
-    POST_QUESTION_FAIL,
-    DELETE_QUESTION_REQUEST,
-    DELETE_QUESTION_SUCCESS,
-    DELETE_QUESTION_FAIL,
-    UPDATE_QUESTION_REQUEST,
-    UPDATE_QUESTION_SUCCESS,
-    UPDATE_QUESTION_FAIL
+    FETCH_PRODUCTS_REQUEST,
+    FETCH_PRODUCTS_SUCCESS,
+    FETCH_PRODUCTS_FAIL,
+    CREATE_PRODUCT_REQUEST,
+    CREATE_PRODUCT_SUCCESS,
+    CREATE_PRODUCT_FAIL,
+    DELETE_PRODUCT_REQUEST,
+    DELETE_PRODUCT_SUCCESS,
+    DELETE_PRODUCT_FAIL,
+    UPDATE_PRODUCT_REQUEST,
+    UPDATE_PRODUCT_SUCCESS,
+    UPDATE_PRODUCT_FAIL
 } from '../constants';
 
 export const signIn = (username, password) => ({
@@ -45,39 +38,18 @@ export const resetNotificationMessage = () => ({type: RESET_NOTIFICATION_MESSAGE
 
 export const signOut = () => ({type: SIGNOUT});
 
-export const fetchEventByCode = code => ({
-    type: FETCH_EVENT_REQUEST,
-    code
-});
+export const fetchProducts = () => ({type: FETCH_PRODUCTS_REQUEST});
+export const fetchProductsSuccess = (products) => ({type: FETCH_PRODUCTS_SUCCESS, products});
+export const fetchProductsFail = (error) => ({type: FETCH_PRODUCTS_FAIL, error});
 
-export const fetchEventByCodeSuccess = event => ({
-    type: FETCH_EVENT_SUCCESS,
-    event
-});
+export const createProduct = (product) => ({type: CREATE_PRODUCT_REQUEST, product});
+export const createProductSuccess = (product) => ({type: CREATE_PRODUCT_SUCCESS, product});
+export const createProductFail = (error) => ({type: CREATE_PRODUCT_FAIL, error});
 
-export const fetchEventByCodeFail = error => ({
-    type: FETCH_EVENT_FAIL,
-    error
-});
+export const deleteProduct = (product) => ({type: DELETE_PRODUCT_REQUEST, product});
+export const deleteProductSuccess = (product) => ({type: DELETE_PRODUCT_SUCCESS, product});
+export const deleteProductFail = (error) => ({type: DELETE_PRODUCT_FAIL, error});
 
-export const resetEvent = () => ({type: RESET_EVENT});
-
-export const createEvent = (event) => ({type: CREATE_EVENT_REQUEST, event});
-export const createEventSuccess = (events) => ({type: CREATE_EVENT_SUCCESS, events}); // just array with one event
-export const createEventFail = (error) => ({type: CREATE_EVENT_FAIL, error});
-
-export const fetchEvents = () => ({type: FETCH_EVENTS_REQUEST});
-export const fetchEventsSuccess = (events) => ({type: FETCH_EVENTS_SUCCESS, events});
-export const fetchEventsFail = (error) => ({type: FETCH_EVENTS_FAIL, error});
-
-export const postQuestion = (question) => ({type: POST_QUESTION_REQUEST, question});
-export const postQuestionSuccess = (newQuestion) => ({type: POST_QUESTION_SUCCESS, event: {newQuestion}});
-export const postQuestionFail = (error) => ({type: POST_QUESTION_FAIL, error});
-
-export const deleteQuestion = (question) => ({type: DELETE_QUESTION_REQUEST, question});
-export const deleteQuestionSuccess = (deletedQuestion) => ({type: DELETE_QUESTION_SUCCESS, event: {deletedQuestion}});
-export const deleteQuestionFail = (error) => ({type: DELETE_QUESTION_FAIL, error});
-
-export const updateQuestion = (question) => ({type: UPDATE_QUESTION_REQUEST, question});
-export const updateQuestionSuccess = (newQuestion) => ({type: UPDATE_QUESTION_SUCCESS, event: {newQuestion}});
-export const updateQuestionFail = (error) => ({type: UPDATE_QUESTION_FAIL, error});
+export const updateProduct = (product) => ({type: UPDATE_PRODUCT_REQUEST, product});
+export const updateProductSuccess = (product) => ({type: UPDATE_PRODUCT_SUCCESS, product});
+export const updateProductFail = (error) => ({type: UPDATE_PRODUCT_FAIL, error});

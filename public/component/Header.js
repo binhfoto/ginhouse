@@ -9,7 +9,7 @@ import { LinearProgress } from 'material-ui/Progress';
 
 import {
     HOME_ROUTE,
-    EVENT_MANAGEMENT_ROUTE,
+    PRODUCT_MANAGEMENT_ROUTE,
     SIGN_IN_ROUTE
 } from '../constants';
 
@@ -38,7 +38,7 @@ const Header = ({isSignedIn = false, title = 'Sli.do', onSignOut, resetEvent, is
     if (pathname !== SIGN_IN_ROUTE) {
         if (isSignedIn) {
             logOut = <Button color="inherit" onClick={_onSignOut}>Logout</Button>;
-            events = <Button color="inherit" onClick={() => history.push(EVENT_MANAGEMENT_ROUTE)}>Events</Button>
+            events = <Button color="inherit" onClick={() => history.push(PRODUCT_MANAGEMENT_ROUTE)}>Events</Button>
         } else {
             logIn =  <Button color="inherit" onClick={() => {history.push(SIGN_IN_ROUTE)}}>Login</Button>;
         }

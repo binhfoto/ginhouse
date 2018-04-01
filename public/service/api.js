@@ -17,61 +17,41 @@ const Api = {
             .catch(response => ({ error: response.response.data }));
     },
 
-    fetchEventByCode: (code) => {
-        const endpoint = getEndPoint(`/api/events/${code}`);
+    fetchProducts: () => {
+        const endpoint = getEndPoint(`/api/products`);
         return axios
             .get(endpoint)
-            .then(response => ({ event: response.data.event }))
+            .then(response => ({ products: response.data.products }))
             .catch(response => ({ error: response.response.data }));
     },
 
-    fetchEvents: () => {
-        const endpoint = getEndPoint(`/api/events`);
+    createProduct: (product) => {
+        const endpoint = getEndPoint(`/api/products`);
         return axios
-            .get(endpoint, {
+            .post(endpoint, product, {
                 headers: withAuthHeader(Token.get())
             })
-            .then(response => ({ events: response.data.events }))
+            .then(response => ({ product: response.data.product }))
             .catch(response => ({ error: response.response.data }));
     },
 
-    createEvent: (event) => {
-        const endpoint = getEndPoint(`/api/events`);
+    updateProduct: (product) => {
+        const endpoint = getEndPoint(`/api/products/${product._id}`);
         return axios
-            .post(endpoint, event, {
+            .put(endpoint, product, {
                 headers: withAuthHeader(Token.get())
             })
-            .then(response => ({ event: response.data.event }))
+            .then(response => ({ product: response.data.product }))
             .catch(response => ({ error: response.response.data }));
     },
 
-    postQuestion: (question) => {
-        const endpoint = getEndPoint(`/api/questions`);
-        return axios
-            .post(endpoint, question, {
-                headers: withAuthHeader(Token.get())
-            })
-            .then(response => ({ question: response.data.question }))
-            .catch(response => ({ error: response.response.data }));
-    },
-
-    updateQuestion: (question) => {
-        const endpoint = getEndPoint(`/api/questions/${question._id}`);
-        return axios
-            .put(endpoint, question, {
-                headers: withAuthHeader(Token.get())
-            })
-            .then(response => ({ question: response.data.question }))
-            .catch(response => ({ error: response.response.data }));
-    },
-
-    deleteQuestion: (question) => {
-        const endpoint = getEndPoint(`/api/questions/${question._id}`);
+    deleteProduct: (product) => {
+        const endpoint = getEndPoint(`/api/products/${product._id}`);
         return axios
             .delete(endpoint, {
                 headers: withAuthHeader(Token.get())
             })
-            .then(response => ({ question: response.data.question }))
+            .then(response => ({ product: response.data.product }))
             .catch(response => ({ error: response.response.data }));
     }
 };

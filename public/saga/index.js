@@ -1,18 +1,15 @@
-import {all} from 'redux-saga/effects';
+import { all } from 'redux-saga/effects';
 
-import EventSaga from './event';
-import QuestionSaga from './question';
+import ProductSaga from './product';
 import SignInSaga from './signIn';
 
 /******************************** ROOT SAGA ********************************/
 export default function* () {
     yield all([
         SignInSaga.signIn(),
-        EventSaga.fetchEventByCode(),
-        EventSaga.fetchEvents(),
-        EventSaga.createEvent(),
-        QuestionSaga.postQuestion(),
-        QuestionSaga.deleteQuestion(),
-        QuestionSaga.updateQuestion()
+        ProductSaga.fetchProducts(),
+        ProductSaga.createProduct(),
+        ProductSaga.deleteProduct(),
+        ProductSaga.updateProduct()
     ]);
 };

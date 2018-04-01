@@ -1,18 +1,11 @@
-import {combineReducers} from 'redux';
+import { combineReducers } from 'redux';
 
 import {
     SIGNIN_SUCCESS,
     SIGNIN_FAIL,
     SIGNOUT,
-    FETCH_EVENT_SUCCESS,
-    FETCH_EVENT_FAIL,
-    RESET_EVENT,
-    FETCH_EVENTS_SUCCESS,
-    FETCH_EVENTS_FAIL,
-    CREATE_EVENT_SUCCESS,
-    POST_QUESTION_SUCCESS,
-    DELETE_QUESTION_SUCCESS,
-    UPDATE_QUESTION_SUCCESS
+    FETCH_PRODUCTS_SUCCESS,
+    FETCH_PRODUCTS_FAIL
 } from '../constants';
 
 
@@ -34,62 +27,12 @@ const isLoading = (state = false, {type}) => {
     return state;
 };
 
-const notificationMessage = (state = null, {type, error}) => {
-    if (type === POST_QUESTION_SUCCESS) {
-        return 'Question posted successfully';
-    } else if (type === CREATE_EVENT_SUCCESS) {
-        return 'Event created successfully';
-    } else if (type.endsWith('_FAIL')) {
-        return error.message || error
-    }
-    return null; // RESET_ERROR_MESSAGE returns null
-};
-
-const event = (state = null, {type, event}) => {
+const products = (state = [], {type, events}) => {
     switch (type) {
-        case FETCH_EVENT_SUCCESS:
-            return event;
-        case FETCH_EVENT_FAIL:
-        case RESET_EVENT:
-            return null;
-        case UPDATE_QUESTION_SUCCESS: {
-            const newQuestion = event.newQuestion;
-            state.questions = state.questions.map(question => {
-                if (question._id === newQuestion._id) {
-                    return newQuestion
-                }
-                return question;
-            });
-            return state;
-        }
-        case POST_QUESTION_SUCCESS: {
-            state.questions = state.questions.concat(event.newQuestion);
-            return state;
-        }
-        case DELETE_QUESTION_SUCCESS: {
-            const deletedQuestion = event.deletedQuestion;
-            state.questions = state.questions.reduce((result, question) => {
-                if (question._id !== deletedQuestion._id) {
-                    result.push(question);
-                }
-                return result;
-            }, []);
-            return state;
-        }
-        default:
-            return state;
-    }
-};
-
-const events = (state = [], {type, events}) => {
-    switch (type) {
-        case FETCH_EVENTS_SUCCESS:
+        case FETCH_PRODUCTS_SUCCESS:
             return events;
-        case FETCH_EVENTS_FAIL:
+        case FETCH_PRODUCTS_FAIL:
             return [];
-        case CREATE_EVENT_SUCCESS: {
-            return [].concat(events, state);
-        }
         default:
             return state;
     }
@@ -98,9 +41,7 @@ const events = (state = [], {type, events}) => {
 const rootReducer = combineReducers({
     isSignedIn,
     isLoading,
-    notificationMessage,
-    event,
-    events
+    products
 });
 
 export default rootReducer;
