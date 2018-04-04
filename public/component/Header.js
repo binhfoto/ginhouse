@@ -27,11 +27,13 @@ import Token from '../service/token';
 
 const Header = ({isSignedIn = false, title = 'Gin House', onSignOut, isLoading, location: {pathname}, history}) => {
 
-    let logIn, logOut, products;
+    let logIn, logOut, products, home;
 
-    const home = <IconButton color="inherit" onClick={() => {
-        pathname !== HOME_ROUTE && history.push(HOME_ROUTE);
-    }}><HomeIcon/></IconButton>;
+    if (pathname !== HOME_ROUTE) {
+        home = <IconButton color="inherit" onClick={() => {
+            pathname !== HOME_ROUTE && history.push(HOME_ROUTE);
+        }}><HomeIcon/></IconButton>;
+    }
 
     const info = <IconButton color="inherit" onClick={() => {
         /*pathname !== HOME_ROUTE && history.push(HOME_ROUTE);*/

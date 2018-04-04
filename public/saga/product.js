@@ -22,9 +22,9 @@ import {
 
 /******************************** FETCH PRODUCTS SAGA ********************************/
 function * watchFetchProducts () {
-    const {product, error} = yield call(Api.fetchProducts);
-    if (product) {
-        yield put(fetchProductsSuccess(product));
+    const {products, error} = yield call(Api.fetchProducts);
+    if (products) {
+        yield put(fetchProductsSuccess(products));
     } else {
         yield put(fetchProductsFail(error));
     }
@@ -78,6 +78,7 @@ function * updateProduct () {
 
 export default {
     fetchProducts,
+    watchFetchProducts,
     createProduct,
     deleteProduct,
     updateProduct
