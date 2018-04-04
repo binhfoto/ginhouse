@@ -4,7 +4,13 @@ import {connect} from 'react-redux';
 import AppBar from 'material-ui/AppBar';
 import Toolbar from 'material-ui/Toolbar';
 import Typography from 'material-ui/Typography';
-import Button from 'material-ui/Button';
+import IconButton from 'material-ui/IconButton';
+import HomeIcon from 'material-ui-icons/Home';
+import SignOutIcon from 'material-ui-icons/ExitToApp';
+import SignInIcon from 'material-ui-icons/Security';
+import EditIcon from 'material-ui-icons/ModeEdit';
+import GinHouseIcon from 'material-ui-icons/FilterVintage';/*Gesture*/
+import InfoIcon from 'material-ui-icons/InfoOutline';
 import { LinearProgress } from 'material-ui/Progress';
 
 import {
@@ -14,20 +20,22 @@ import {
 } from '../constants';
 
 import {
-    signOut,
-    resetEvent
+    signOut
 } from "../action";
 
 import Token from '../service/token';
 
-const Header = ({isSignedIn = false, title = 'Sli.do', onSignOut, resetEvent, isLoading, location: {pathname}, history}) => {
+const Header = ({isSignedIn = false, title = 'Gin House', onSignOut, isLoading, location: {pathname}, history}) => {
 
-    let logIn, logOut, events;
+    let logIn, logOut, products;
 
-    const home = <Button color="inherit" onClick={() => {
-        resetEvent();
+    const home = <IconButton color="inherit" onClick={() => {
         pathname !== HOME_ROUTE && history.push(HOME_ROUTE);
-    }}>Home</Button>;
+    }}><HomeIcon/></IconButton>;
+
+    const info = <IconButton color="inherit" onClick={() => {
+        /*pathname !== HOME_ROUTE && history.push(HOME_ROUTE);*/
+    }}><InfoIcon/></IconButton>;
 
     const _onSignOut = () => {
         Token.remove();
@@ -37,21 +45,25 @@ const Header = ({isSignedIn = false, title = 'Sli.do', onSignOut, resetEvent, is
 
     if (pathname !== SIGN_IN_ROUTE) {
         if (isSignedIn) {
-            logOut = <Button color="inherit" onClick={_onSignOut}>Logout</Button>;
-            events = <Button color="inherit" onClick={() => history.push(PRODUCT_MANAGEMENT_ROUTE)}>Events</Button>
+            logOut = <IconButton color="inherit" onClick={_onSignOut}><SignOutIcon/></IconButton>;
+            products = <IconButton color="inherit" onClick={() => history.push(PRODUCT_MANAGEMENT_ROUTE)}><EditIcon/></IconButton>
         } else {
-            logIn =  <Button color="inherit" onClick={() => {history.push(SIGN_IN_ROUTE)}}>Login</Button>;
+            logIn =  <IconButton color="inherit" onClick={() => {history.push(SIGN_IN_ROUTE)}}><SignInIcon/></IconButton>;
         }
     }
 
     return (
         <div className="header">
-            <AppBar position="static" color="primary">
+            <AppBar position="fixed" color="primary">
                 <Toolbar>
+                    <IconButton color="inherit" aria-label="Menu">
+                        <GinHouseIcon />
+                    </IconButton>
                     <Typography variant="title" color="inherit" className="title">{title}</Typography>
                     {home}
+                    {info}
                     {logIn}
-                    {events}
+                    {products}
                     {logOut}
                 </Toolbar>
             </AppBar>
@@ -63,6 +75,6 @@ const Header = ({isSignedIn = false, title = 'Sli.do', onSignOut, resetEvent, is
 export default withRouter(
     connect(
         ({isSignedIn, isLoading}) => ({isSignedIn, isLoading}),
-        {onSignOut: signOut, resetEvent}
+        {onSignOut: signOut}
     )(Header)
 );

@@ -27,10 +27,10 @@ const isLoading = (state = false, {type}) => {
     return state;
 };
 
-const products = (state = [], {type, events}) => {
+const products = (state = [], {type, products}) => {
     switch (type) {
         case FETCH_PRODUCTS_SUCCESS:
-            return events;
+            return products;
         case FETCH_PRODUCTS_FAIL:
             return [];
         default:

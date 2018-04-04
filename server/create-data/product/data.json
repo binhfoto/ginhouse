@@ -1,22 +1,27 @@
 [
     {
         "name": "Áo Gấu",
-        "description": "Màu hồng, cam, đỏ"
+        "description": "Màu hồng, cam, đỏ",
+        "price": 100000
     },
     {
         "name": "Áo Thỏ",
-        "description": "Màu hồng, cam, đỏ"
+        "description": "Màu hồng, cam, đỏ",
+        "price": 100000
     },
     {
         "name": "Áo Cá Sấu",
-        "description": "Màu hồng, cam, đỏ"
+        "description": "Màu hồng, cam, đỏ",
+        "price": 100000
     },
     {
         "name": "Áo Dưa Hấu",
-        "description": "Màu hồng, cam, đỏ"
+        "description": "Màu hồng, cam, đỏ",
+        "price": 100000
     },
     {
         "name": "Áo Gà",
-        "description": "Màu hồng, cam, đỏ"
+        "description": "Màu hồng, cam, đỏ",
+        "price": 100000
     }
 ]

@@ -45,7 +45,6 @@ const App = () => {
                     <div className="container">
                         <Header/>
                         <Content/>
-                        <Notification/>
                     </div>
                 </HashRouter>
             </MuiThemeProvider>

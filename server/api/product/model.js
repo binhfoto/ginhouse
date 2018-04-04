@@ -20,6 +20,10 @@ const _schema = new Schema({
     },
     image: {
         type: String
+    },
+    price: {
+        type: Number,
+        default: 100000
     }
 });
 

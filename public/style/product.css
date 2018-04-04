@@ -1,0 +1,11 @@
+.product-grid {
+    max-width: 1040px;
+}
+
+.product-item {
+    min-width: 200px;
+}
+
+.product-item-media {
+    min-height: 194px;
+}
